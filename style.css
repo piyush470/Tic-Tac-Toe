@@ -74,3 +74,14 @@ border: 2px solid #22D3EE;
     font-size: 3vw;
     
 }
+@media (max-width: 600px) {
+    .gameContiner {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .controls {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
