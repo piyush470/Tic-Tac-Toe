@@ -9,6 +9,7 @@ let turn = "X";
 let count=0;
 start.addEventListener("click",function(){
     if(gameplay==false){
+        turnstmnt.style.color='rgb(250, 6, 116';
         turnstmnt.innerHTML="Player X's turn ";
         start.innerHTML="Reset";
         count=0;
@@ -27,26 +28,32 @@ container.addEventListener("click",function(event){
         count++;
         if(turn=="X"){
             myCell.innerHTML=turn;
-            myCell.style.color="Black";
+            myCell.style.color="rgb(250, 6, 116";
+            turnstmnt.style.color='#22D3EE';
             turn = 'O';
         }
         else{
             myCell.innerHTML=turn;
-            myCell.style.color='red';
+            turnstmnt.style.color='rgb(250, 6, 116';
+            myCell.style.color='#22D3EE';
             turn = "X";
         }
+       
         turnstmnt.innerHTML=`Player ${turn}'s turn `;
         let output=CheckWinner();
         if(output==2){
+            turnstmnt.style.color='#4ADE80';
             turnstmnt.innerHTML="Player 'X' is Winner";
             restartGame();
         }
         else if(output==1){
+            turnstmnt.style.color='#4ADE80';
             turnstmnt.innerHTML="Player 'O' is Winner";
             restartGame();
 
         }
         else if(count==9){
+            turnstmnt.style.color='#01ffee';
             turnstmnt.innerHTML="Game Draw";
             restartGame();
         }
