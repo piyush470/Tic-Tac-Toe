@@ -4,17 +4,26 @@ const start=document.getElementById("strt");
 const turnstmnt=document.getElementById("turnstmnt");
 
 
+const XclickSound = new Audio("Sounds/Soft click.mp3");
+const OclickSound = new Audio("Sounds/Slightly different pop.mp3");
+const Startsnd = new Audio("Sounds/Short whoosh.mp3");
+const Wins = new Audio("Sounds/Positive 3-note victory.mp3");
+const Drawsnd = new Audio("Sounds/Soft descending tone.mp3");
+const Resetsnd = new Audio("Sounds/Short reverse whoosh.mp3");
+
 let gameplay=false;
 let turn = "X";
 let count=0;
 start.addEventListener("click",function(){
     if(gameplay==false){
+        Startsnd.play();
         turnstmnt.style.color='rgb(250, 6, 116';
         turnstmnt.innerHTML="Player X's turn ";
         start.innerHTML="Reset";
         count=0;
         turn = "X";
     }else{
+        Resetsnd.play();
         turnstmnt.innerHTML="";
         start.innerHTML="Start"
     }
@@ -27,12 +36,14 @@ container.addEventListener("click",function(event){
         let myCell = event.target;
         count++;
         if(turn=="X"){
+            XclickSound.play();
             myCell.innerHTML=turn;
             myCell.style.color="rgb(250, 6, 116";
             turnstmnt.style.color='#22D3EE';
             turn = 'O';
         }
         else{
+            OclickSound.play();
             myCell.innerHTML=turn;
             turnstmnt.style.color='rgb(250, 6, 116';
             myCell.style.color='#22D3EE';
@@ -43,16 +54,19 @@ container.addEventListener("click",function(event){
         let output=CheckWinner();
         if(output==2){
             turnstmnt.style.color='#4ADE80';
+            Wins.play();
             turnstmnt.innerHTML="Player 'X' is Winner";
             restartGame();
         }
         else if(output==1){
             turnstmnt.style.color='#4ADE80';
+            Wins.play();
             turnstmnt.innerHTML="Player 'O' is Winner";
             restartGame();
 
         }
         else if(count==9){
+            Drawsnd.play();
             turnstmnt.style.color='#01ffee';
             turnstmnt.innerHTML="Game Draw";
             restartGame();
